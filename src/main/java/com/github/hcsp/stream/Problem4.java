@@ -14,8 +14,8 @@ public class Problem4 {
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<Employee>> collect(List<Employee> employees) {
         Map<String, List<Employee>> resultMap = employees.stream().
+                sorted(Comparator.comparing(Employee::getAge)).
                 collect(Collectors.groupingBy(Employee::getDepartment));
-        resultMap.forEach((k, v)->v.sort(Comparator.comparing(Employee::getAge)));
         return resultMap;
     }
 
